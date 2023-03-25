@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Todo List</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.3/css/bulma.min.css">
+</head>
+<body>
+<section class="section">
+    <div class="container">
+        <h1 class="title">Todo List</h1>
+        <form class="field has-addons" th:action="@{/}" method="post">
+            <div class="control is-expanded">
+                <input class="input" type="text" name="taskName" placeholder="Task name" required>
+            </div>
+            <div class="control">
+                <button class="button is-primary" type="submit">Add task</button>
+            </div>
+        </form>
+        <table class="table is-striped is-fullwidth">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Task Name</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="task : ${tasks}">
+                <td th:text="${task.id}"></td>
+                <td th:text="${task.taskName}"></td>
+                <td>
+                    <form th:action="@{/delete}" method="post">
+                        <input type="hidden" name="id" th:value="${task.id}">
+                        <button class="button is-danger is-small" type="submit">Delete</button>
+                    </form>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+</body>
+</html>
