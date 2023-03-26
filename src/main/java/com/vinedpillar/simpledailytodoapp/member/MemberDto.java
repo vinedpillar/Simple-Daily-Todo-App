@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 public class MemberDto {
+    // Post용 클래스
     @Getter
     public static class Post {
         @NotBlank
@@ -16,6 +17,7 @@ public class MemberDto {
         private String nickname;
     }
 
+    // Patch용 클래스
     @Getter
     public static class Patch {
         private Long id;
@@ -24,6 +26,7 @@ public class MemberDto {
         private String nickname;
     }
 
+    // Response용 클래스
     @Getter
     public static class Response {
         private Long id;
