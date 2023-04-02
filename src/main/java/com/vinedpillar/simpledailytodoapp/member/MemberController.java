@@ -7,12 +7,14 @@ import jakarta.validation.constraints.Positive;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("/v1/members")
+@Validated
 public class MemberController {
     private final MemberService memberService;
     private final MemberMapper memberMapper;
@@ -58,6 +60,7 @@ public class MemberController {
     @PatchMapping("/{member-id}")
     public ResponseEntity patchMember(@PathVariable("member-id") @Positive Long memberId,
                                       @RequestBody @Valid MemberDto.Patch requestBody) {
+        requestBody.setMemberId(memberId);
         Member member = memberService.updateMember(
                 memberMapper.memberPatchToMember(requestBody));
 

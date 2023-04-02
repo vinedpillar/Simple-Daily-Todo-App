@@ -16,6 +16,10 @@ public class MemoDto {
     public static class Patch {
         private Long id;
         private String memoContent;
+
+        public void setMemoId(Long id) {
+            this.id = id;
+        }
     }
 
     // 반응용 클래스

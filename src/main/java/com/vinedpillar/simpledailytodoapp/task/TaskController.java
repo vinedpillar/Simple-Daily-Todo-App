@@ -5,12 +5,14 @@ import com.vinedpillar.simpledailytodoapp.dto.SingleResponseDto;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("/v1/tasks")
+@Validated
 public class TaskController {
     private TaskService taskService;
     private TaskMapper taskMapper;
@@ -56,6 +58,7 @@ public class TaskController {
     @PatchMapping("/{task-id}")
     public ResponseEntity patchTask(@PathVariable("task-id") Long taskId,
                                     @RequestBody TaskDto.Patch requestBody) {
+        requestBody.setTaskId(taskId);
         Task task = taskService.updateTask(taskMapper.taskPatchToTask(requestBody));
 
         return new ResponseEntity<>(

@@ -1,5 +1,6 @@
 package com.vinedpillar.simpledailytodoapp.dto;
 
+import com.vinedpillar.simpledailytodoapp.memo.MemoDto;
 import com.vinedpillar.simpledailytodoapp.page.PageInfo;
 import lombok.Getter;
 import org.springframework.data.domain.Page;

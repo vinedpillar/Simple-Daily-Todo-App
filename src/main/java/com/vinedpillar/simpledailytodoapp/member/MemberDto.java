@@ -24,6 +24,10 @@ public class MemberDto {
         private String email;
         private String password;
         private String nickname;
+
+        public void setMemberId(Long id) {
+            this.id = id;
+        }
     }
 
     // Response용 DTO

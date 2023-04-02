@@ -18,7 +18,12 @@ public class TaskDto {
     @Getter
     @AllArgsConstructor
     public static class Patch {
+        private Long id;
         private String content;
+
+        public void setTaskId(Long id) {
+            this.id = id;
+        }
     }
 
     // 응답 DTO
